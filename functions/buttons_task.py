@@ -66,7 +66,7 @@ def perform_right_click(driver):
         # Realizar click derecho
         actions = ActionChains(driver)
         actions.context_click(button).perform()
-        time.sleep(1)  # Agregar espera
+        time.sleep(1.5)  # Agregar espera
         
         logger.info("Click derecho ejecutado")
         time.sleep(0.5)
