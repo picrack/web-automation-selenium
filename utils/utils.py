@@ -107,3 +107,40 @@ def take_screenshot(driver, filename='error_screenshot.png'):
         logger.info(f"Screenshot guardado: {filepath}")
     except Exception as e:
         logger.error(f"Error al tomar screenshot: {e}")
+
+def retry_on_failure(func, max_retries=3, delay=2):
+    """
+    Reintentar función si falla con exponential backoff
+    
+    Args:
+        func (callable): Función a ejecutar
+        max_retries (int): Número máximo de intentos
+        delay (int): Segundos base entre intentos
+    
+    Returns:
+        Result de la función si tiene éxito
+        
+    Raises:
+        Exception: Si falla después de todos los intentos
+        
+    Example:
+        >>> def fetch_data():
+        >>>     return driver.find_element(By.ID, 'elemento')
+        >>> 
+        >>> element = retry_on_failure(fetch_data, max_retries=3, delay=2)
+    """
+    import time
+    
+    for attempt in range(max_retries):
+        try:
+            logger.info(f"Intento {attempt + 1} de {max_retries}")
+            result = func()
+            logger.info(f"Éxito en intento {attempt + 1}")
+            return result
+        except Exception as e:
+            if attempt == max_retries - 1:
+                logger.error(f"Falló después de {max_retries} intentos: {e}")
+                raise
+            wait_time = delay * (attempt + 1)  # Exponential backoff
+            logger.warning(f"Intento {attempt + 1} falló: {e}. Esperando {wait_time}s antes de reintentar...")
+            time.sleep(wait_time)
