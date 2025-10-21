@@ -63,7 +63,9 @@ def fill_form(driver):
         gender_radio = wait_for_clickable(driver, FORM_SELECTORS['gender_male'])
         scroll_to_element(driver, gender_radio)
         time.sleep(0.5)
-        gender_radio.click()
+        scroll_to_element(driver, gender_radio)
+        time.sleep(0.5)
+        driver.execute_script("arguments[0].click();", gender_radio)
         
         # Mobile
         mobile_input = wait_for_element(driver, FORM_SELECTORS['mobile'])
