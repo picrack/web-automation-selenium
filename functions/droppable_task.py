@@ -36,7 +36,7 @@ def perform_drag_and_drop(driver):
         
         # Realizar drag & drop (método alternativo para Firefox)
         actions = ActionChains(driver)
-        actions.click_and_hold(draggable).pause(0.5).move_to_element(droppable).pause(0.5).release().perform()
+        actions.click_and_hold(draggable).pause(1).move_to_element(droppable).pause(1).release().perform()
         
         logger.info("Drag & Drop ejecutado")
         time.sleep(1)
