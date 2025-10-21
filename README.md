@@ -166,6 +166,12 @@ RPA_Test/
 - **Environment-based configuration**
 - **Full documentation**
 
+### Advanced Features
+
+- **Retry Logic:** Automatic retry with exponential backoff for transient failures
+- **Explicit Waits:** WebDriverWait for reliable element detection
+- **Error Recovery:** Graceful handling with detailed logging
+
 ## 🔍 Technical Highlights
 
 ### Web Scraping
@@ -222,7 +228,7 @@ MIT License - feel free to use this project for learning and development.
 
 ## 👤 Author
 
-**Bastián González**
+**Bastián González Picart**
 - LinkedIn: [linkedin.com/in/bastiángonzálezpicart](https://linkedin.com/in/bastiángonzálezpicart)
 - GitHub: [@picrack](https://github.com/picrack)
 
